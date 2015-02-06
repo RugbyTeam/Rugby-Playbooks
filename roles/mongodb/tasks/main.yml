@@ -1,0 +1,42 @@
+---
+# This playbook installs and configures mongodb
+
+- name: Import MongoDB public GPG key
+  apt_key: >
+    id=7F0CEB10
+    keyserver=keyserver.ubuntu.com
+    state=present
+
+- name: Add MongoDB source list
+  copy: >
+    src=mongodb.list
+    dest=/etc/apt/sources.list.d/mongodb.list
+    mode=0644
+    owner=root
+
+- name: Install MongoDB server
+  apt: >
+    name=mongodb-org-server
+    update_cache=yes
+    state=latest
+
+- name: Create MongoDB log, pid, and db directories
+  file: >
+    path={{ item }}
+    state=directory
+    mode=0744
+    owner=mongod
+    recurse=yes
+    with_items:
+        - "{{ mongodb_logfile_path | dirname }}"
+        - "{{ mongodb_pidfile_path | dirname }}"
+        - "{{ mongdb_db_path | dirname }}"
+
+- name: Configure MongoDB server
+  template: >
+    src=mongodb.conf.j2
+    dest=/etc/mongodb.conf
+    mode=0644
+    owner=root
+  notify: Restart MongoDB
+

@@ -1,0 +1,36 @@
+##
+# Logging
+#
+# Should be as minimal as possible since
+# its never going to be looked at
+##
+
+systemLog:
+    destination: file
+    verbosity: 0
+    path: {{ mongodb_logfile_path }}
+    quiet: true
+
+##
+# Process Management
+##
+
+processManagement:
+    pidFilePath: {{ mongodb_pidfile_path }}
+    fork: true
+
+##
+# Network
+##
+
+net:
+    port: {{ mongodb_port }}
+    bindIp:  {{ mongodb_bindip }}
+
+##
+# Storage
+#
+
+storage:
+    dbPath: {{ mongodb_db_path }}
+

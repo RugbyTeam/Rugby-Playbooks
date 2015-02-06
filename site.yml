@@ -1,0 +1,8 @@
+---
+# The playbook defines how to configure all
+# Rugby services
+
+- hosts: db
+  roles:
+    - { role: mongodb, when: db_type == 'MongoDB' } 
+

@@ -1,0 +1,12 @@
+---
+# Variables for mongodb role
+#
+# All values are the defaults recommended by
+# mongo org
+
+mongodb_logfile_path: "/var/log/mongodb/mongodb.log"
+mongodb_pidfile_path: "/tmp/mongodb.pid"
+mongodb_db_path: "/data/db"
+mongodb_port: 27017
+mongodb_bindip: 127.0.0.1
+
