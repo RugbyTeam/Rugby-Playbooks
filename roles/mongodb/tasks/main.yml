@@ -25,7 +25,7 @@
     path={{ item }}
     state=directory
     mode=0744
-    owner=mongod
+    owner=mongodb
     recurse=yes
   with_items:
     - "{{ mongodb_logfile_path | dirname }}"
@@ -34,8 +34,8 @@
 
 - name: Configure MongoDB server
   template: >
-    src=mongodb.conf.j2
-    dest=/etc/mongodb.conf
+    src=mongod.conf.j2
+    dest=/etc/mongod.conf
     mode=0644
     owner=root
   notify: Restart MongoDB
