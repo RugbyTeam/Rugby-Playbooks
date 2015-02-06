@@ -6,3 +6,7 @@
   roles:
     - { role: mongodb, when: db_type == 'MongoDB' } 
 
+- hosts: env
+  roles:
+    - { role: nodejs, when: env_type == 'NodeJS' }
+

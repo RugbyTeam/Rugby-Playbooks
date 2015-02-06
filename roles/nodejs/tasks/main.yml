@@ -1,0 +1,20 @@
+---
+# This playbook installs NodeJS and NPM
+
+- name: Add NodeJS PPA
+  apt_repository: repo="ppa:chris-lea/node.js" state=present
+
+- name: Install NodeJS/NPM
+  apt: >
+    name='nodejs' 
+    update_cache=yes
+    state=latest
+
+- name: Symlink nodejs to node
+  file: >
+    src=/usr/bin/nodejs
+    path=/usr/bin/node
+    mode=0755
+    owner=root
+    state=link
+
