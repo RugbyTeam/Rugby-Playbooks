@@ -27,10 +27,10 @@
     mode=0744
     owner=mongod
     recurse=yes
-    with_items:
-        - "{{ mongodb_logfile_path | dirname }}"
-        - "{{ mongodb_pidfile_path | dirname }}"
-        - "{{ mongdb_db_path | dirname }}"
+  with_items:
+    - "{{ mongodb_logfile_path | dirname }}"
+    - "{{ mongodb_pidfile_path | dirname }}"
+    - "{{ mongodb_db_path | dirname }}"
 
 - name: Configure MongoDB server
   template: >
