@@ -24,10 +24,10 @@ Vagrant.configure "2" do |config|
             ansible.playbook = "site.yml"
             ansible.sudo = true
             ansible.groups = {
-                "env" => ["NodeJS"]
+                "lang" => ["NodeJS"]
             }
             ansible.extra_vars = {
-                env_type: 'NodeJS'
+                lang_name: 'NodeJS'
             }
         end
     end
