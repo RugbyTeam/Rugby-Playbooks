@@ -1,0 +1,9 @@
+- name: MongoDB
+  service:
+      role: db
+      type: mongo
+
+- name: UCRCareer
+  service:
+      role: lang
+      type: node

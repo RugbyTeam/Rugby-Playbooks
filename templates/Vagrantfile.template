@@ -1,0 +1,19 @@
+# Spawn VM's to test ansible configuration
+
+Vagrant.configure "{{ vms|length }}" do |config|  
+    {% for vm in vms %}
+    config.vm.define "{{ vm.name }}" do |{{ vm.service.role }}|
+        {{ vm.service.role }}.vm.box = "ubuntu/trusty64"
+        {{ vm.service.role }}.vm.provision "ansible" do |ansible|
+            ansible.playbook = "site.yml"
+            ansible.sudo = true
+            ansible.groups = {
+               "{{ vm.service.role }}" => ["{{ vm.service.type }}"]
+            }
+            ansible.extra_vars = {
+                {{ vm.service.role }}_type: "{{ vm.service.type }}"
+            }
+        end
+    end
+    {% endfor %}
+end
