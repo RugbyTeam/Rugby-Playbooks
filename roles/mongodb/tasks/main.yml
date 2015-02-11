@@ -30,7 +30,7 @@
   with_items:
     - "{{ mongodb_logfile_path | dirname }}"
     - "{{ mongodb_pidfile_path | dirname }}"
-    - "{{ mongodb_db_path | dirname }}"
+    - "{{ mongodb_db_path }}"
 
 - name: Configure MongoDB server
   template: >
@@ -38,5 +38,7 @@
     dest=/etc/mongod.conf
     mode=0644
     owner=root
-  notify: Restart MongoDB
+
+- name: Start mongod
+  command: /usr/bin/mongod --config /etc/mongod.conf
 
