@@ -40,5 +40,7 @@
     owner=root
 
 - name: Start mongod
+  remote_user: vagrant
+  sudo_user: root
   command: /usr/bin/mongod --config /etc/mongod.conf
 
