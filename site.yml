@@ -4,9 +4,9 @@
 
 - hosts: db
   roles:
-    - { role: db, when: db_type == 'MongoDB' } 
+    - { role: mongodb, when: db_type == 'mongo' } 
 
 - hosts: lang
   roles:
-    - { role: lang, when: lang_type == 'NodeJS' }
+    - { role: nodejs, when: lang_type == 'node' }
 

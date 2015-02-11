@@ -1,9 +1,9 @@
 - name: MongoDB
   service:
-      role: db
+      group: db
       type: mongo
 
 - name: UCRCareer
   service:
-      role: lang
+      group: lang
       type: node
