@@ -1,6 +1,6 @@
 # Spawn VM's to test ansible configuration
 
-Vagrant.configure "{{ vms|length }}" do |config|  
+Vagrant.configure "2" do |config|  
     {% for vm in vms %}
     config.vm.define "{{ vm.name }}" do |{{ vm.service.role }}|
         {{ vm.service.role }}.vm.box = "ubuntu/trusty64"
