@@ -2,9 +2,14 @@
 # The playbook defines how to configure all
 # Rugby services
 
+# Roles to be run on all VMs
+- hosts: all
+  roles:
+    - common
+
 - hosts: db
   roles:
-    - { role: mongodb, when: db_type == 'mongo' } 
+    - { role: mongodb, when: db_type == 'mongo' }
 
 - hosts: lang
   roles:

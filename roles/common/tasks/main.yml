@@ -1,0 +1,14 @@
+---
+# This playbook installs some common utils that need to be
+# installed on all VMs
+
+- name: Install build-essential
+  apt: >
+    name=build-essential
+    state=latest
+
+- name: Install git
+  apt: >
+    name=git
+    state=latest
+    
