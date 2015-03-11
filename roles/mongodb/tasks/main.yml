@@ -38,6 +38,15 @@
     dest=/etc/mongod.conf
     mode=0644
     owner=root
+  when: config is not defined
+
+- name: Download config file from master branch
+  get_url:
+    url={{config}}
+    dest=/etc/mongod.conf
+    mode=0644
+    owner=root
+  when: config is defined
 
 - name: Stop mongod
   shell: service mongod stop || true 
