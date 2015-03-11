@@ -39,6 +39,9 @@
     mode=0644
     owner=root
 
+- name: Stop mongod
+  shell: service mongod stop || true 
+
 - name: Start mongod
   remote_user: vagrant
   sudo_user: root
