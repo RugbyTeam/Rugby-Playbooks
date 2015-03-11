@@ -10,6 +10,9 @@
     update_cache=yes
     state=latest
 
+- name: Disable NPM spinner
+  command: /usr/bin/npm config set spin=false
+
 - name: Symlink nodejs to node
   file: >
     src=/usr/bin/nodejs
